@@ -1,0 +1,16 @@
+{
+  "name": "imapp",
+  "version": "0.1.0",
+  "description": "NodeJS functional async email IMAP client",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eldoy/imapp"
+  },
+  "author": "Vidar Eldøy <vidar@eldoy.com>",
+  "license": "MIT",
+  "dependencies": {
+    "imap": "^0.8.19",
+    "mailparser": "^3.3.1"
+  }
+}
