@@ -1,6 +1,6 @@
 # Imapp
 
-NodeJS functional async email IMAP client.
+NodeJS functional async email IMAP client. Based on [node imap](https://github.com/mscdex/node-imap) and [mailparser.](https://github.com/nodemailer/mailparser)
 
 ### Install
 ```
@@ -19,13 +19,45 @@ async function run() {
     host: 'secure.mailserver.com'
   })
 
-  const box = await imap.connect()
+  // Returns an email box object
+  const box = await imap.connect({ name: 'INBOX' })
   console.log(box)
+  {
+    name: 'INBOX',
+    flags: [
+      '\\Answered', '\\Flagged',
+      '\\Deleted',  '\\Seen',
+      '\\Draft',    '$NotJunk',
+      '$Junk',      'Junk',
+      'NotJunk'
+    ],
+    readOnly: true,
+    uidvalidity: 1508591807,
+    uidnext: 568,
+    permFlags: [],
+    keywords: [],
+    newKeywords: false,
+    persistentUIDs: true,
+    nomodseq: false,
+    messages: { total: 109, new: 0 },
+    highestmodseq: '1694'
+  }
 
+  // Returns an array of matching message UIDs
   const result = await imap.search(['SEEN'])
-  console.log({ result })
+  console.log(result)
+  [ 24,  25, 129, 130, 131, 132, 133, 137 ]
 
+  // Returns an array of parsed emails
   const messages = await imap.fetch()
+
+  // with options
+  const messages = await imap.fetch({
+    query: '1:5',
+    bodies: 'HEADER.FIELDS (FROM TO SUBJECT DATE)'
+  })
+
+  // Close connection
   imap.end()
 }
 
