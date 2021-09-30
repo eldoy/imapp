@@ -21,7 +21,7 @@ async function run() {
 
   // Returns an email box object
   const box = await imap.connect({ name: 'INBOX' })
-  console.log(box)
+
   {
     name: 'INBOX',
     flags: [
@@ -45,7 +45,7 @@ async function run() {
 
   // Returns an array of matching message UIDs
   const result = await imap.search(['SEEN'])
-  console.log(result)
+
   [ 24,  25, 129, 130, 131, 132, 133, 137 ]
 
   // Returns an array of parsed emails
