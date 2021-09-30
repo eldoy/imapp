@@ -20,7 +20,7 @@ module.exports = function(config = {}) {
   const server = new Imap({ ...DEFAULT_CONFIG, ...config })
 
   function connect(settings = {}) {
-    settings = { ...DEFAULT_SETTINGS, settings }
+    settings = { ...DEFAULT_SETTINGS, ...settings }
     return new Promise(function(resolve, reject) {
       function open(err, box) {
         if (err) reject(err)
