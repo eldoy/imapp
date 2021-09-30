@@ -1,6 +1,6 @@
 {
   "name": "imapp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "NodeJS functional async email IMAP client",
   "main": "index.js",
   "repository": {
